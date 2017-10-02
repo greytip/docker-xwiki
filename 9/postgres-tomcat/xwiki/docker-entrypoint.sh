@@ -96,6 +96,9 @@ function configure() {
   echo '  Generating authentication validation and encryption keys...'
   xwiki_set_cfg 'xwiki.authentication.validationKey' "$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
   xwiki_set_cfg 'xwiki.authentication.encryptionKey' "$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)"
+  xwiki_set_cfg 'xwiki.store.migration' ${STORE_MIGRATON:-0}
+  xwiki_set_cfg 'xwiki.authentication.authclass' 'org.xwiki.contrib.ldap.XWikiLDAPAuthServiceImpl'
+
 
   echo '  Setting permanent directory...'
   xwiki_set_properties 'environment.permanentDirectory' '/usr/local/xwiki/data'

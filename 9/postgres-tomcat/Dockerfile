@@ -60,6 +60,8 @@ RUN cp /usr/share/java/postgresql-jdbc4.jar /usr/local/tomcat/webapps/ROOT/WEB-I
 
 # Configure Tomcat. For example set the memory for the Tomcat JVM since the default value is too small for XWiki
 COPY tomcat/setenv.sh /usr/local/tomcat/bin/
+COPY tomcat/*.xml /usr/local/tomcat/conf/
+COPY tomcat/rewrite.config /usr/local/tomcat/webapps/ROOT/WEB-INF/
 
 # Setup the XWiki Hibernate configuration
 COPY xwiki/hibernate.cfg.xml /usr/local/tomcat/webapps/ROOT/WEB-INF/hibernate.cfg.xml
